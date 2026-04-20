@@ -1,5 +1,5 @@
 {% set name = "opentelemetry-instrumentation-google-generativeai" %}
-{% set version = "0.49.6" %}
+{% set version = "0.57.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,24 +7,24 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name.replace('-', '_')}}-{{ version }}.tar.gz
-  sha256: dd3ff86d79bd13cad9e28658eddbd37cbf71c62e997e3de385093508a9b06dea
+  sha256: 2fae7eb3f4cdf4319b4f2a4e2a15fb29feb069a0bd6d25412ad07119121cf788
 
 build:
   number: 0
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
-  skip: true  # [py<39]
+  skip: true  # [py<310]
 
 requirements:
   host:
     - pip
     - python
-    - poetry-core
+    - hatchling
   run:
     - python
     - opentelemetry-api >=1.38.0,<2.0.0
     - opentelemetry-instrumentation >=0.59b0
     - opentelemetry-semantic-conventions >=0.59b0
-    - opentelemetry-semantic-conventions-ai >=0.4.13,<0.5
+    - opentelemetry-semantic-conventions-ai >=0.5.1,<0.6.0
   run_constrained:
     - google-genai >=1,<2
 
@@ -50,5 +50,5 @@ extra:
   recipe-maintainers:
     - timkpaine
   skip-lints:
-    - invalid_url
+    - reachable_url
     - missing_imports_or_run_test_py
