@@ -1,13 +1,13 @@
 {% set name = "opentelemetry-instrumentation-google-generativeai" %}
-{% set version = "0.57.0" %}
+{% set version = "0.62.1" %}
 
 package:
-  name: {{ name|lower }}
+  name: {{ name }}
   version: {{ version }}
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name.replace('-', '_')}}-{{ version }}.tar.gz
-  sha256: 2fae7eb3f4cdf4319b4f2a4e2a15fb29feb069a0bd6d25412ad07119121cf788
+  sha256: 556d7627edec16a8b1570a388752743e9adcfdeb2c474492e410972ad7b89f2f
 
 build:
   number: 0
@@ -23,10 +23,10 @@ requirements:
     - python
     - opentelemetry-api >=1.38.0,<2.0.0
     - opentelemetry-instrumentation >=0.59b0
-    - opentelemetry-semantic-conventions >=0.59b0
     - opentelemetry-semantic-conventions-ai >=0.5.1,<0.6.0
+    - opentelemetry-semantic-conventions >=0.63b1
   run_constrained:
-    - google-genai >=1,<2
+    - google-genai >=1.0.0,<2
 
 # Unable to run tests and check imports, google-genai is not in the main channel.
 test:
